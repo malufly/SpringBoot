@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--xmlns 命名空间获取thymeleaf 的提示信息  -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div> Thymeleaf 模版哦。。。</div>
+    <h1>获取请求的值</h1>
+    <div th:text = "${test}"></div>
+    <h1>获取context 中的对象</h1>
+    <div th:text = "${#ctx}"></div>
+    <h1>获取 context中的变量</h1>
+    <div th:text = "${#vars}"></div>
+    <h1>获取 context中的 locale 本地信息</h1>
+    <div th:text = "${#locale}"></div>
+    ===========
+    <h1>获取 HttpServletRequest对象</h1>
+    <div th:text = "${#request}"></div>
+    <h1>获取 HttpServletResponse 对象</h1>
+    <div th:text = "${#response}"></div>
+    <h1> 获取 HttpServletSession 对象 </h1>
+    <div th:text = "${session}"></div>
+    <h1> 获取 servletContext 对象</h1>
+    <div th:text = "${#servletContext}"></div>
+
+    ======
+    <h1>测试th:text 和 th：utext的区别</h1>
+    <h1>这是 th:text 的测试：</h1>
+    <div th:text = "${testText}"></div>
+    <h1>这是 th:utext 的测试：</h1>
+    <div th:utext="${testText}"></div>
+
+    =====
+    <h1>测试  获取数组中的数值 </h1>
+    <div th:object="${users}" >
+        <div th:text="${users[0]}"></div>
+    </div>
+
+    ========
+    <h1> 测试 *{} 和 ${} 的组合使用 </h1>
+    <div th:object="${person}">
+        <span th:text="*{name}"></span>
+        <span th:text="*{age}"></span>
+    </div>
+
+    ======
+    <h1>测试片段循环</h1>
+    <div th:each="user : ${users}">[[${user}]]</div>
+    <div th:each="user: ${users}" th:text="${user}"></div>
+
+    <h1> 测试循环效果</h1>
+    <div th:object="${users}">
+        <span th:each="user: ${users}">[(${user})]</span>
+    </div>
+
+
+
+
+
+
+
+</body>
+</html>
