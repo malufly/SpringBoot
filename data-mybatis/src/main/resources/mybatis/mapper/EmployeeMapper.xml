@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.malu.springboot.datamybatis.dao.EmployeeDao">
+
+<!--    List<Employee> listEmployee();-->
+    <select id="listEmployee" resultType="com.malu.springboot.datamybatis.pojo.Employee">
+            select * from employee;
+    </select>
+<!--    Employee getEmployee(Integer id);-->
+    <select id="getEmployee" resultType="com.malu.springboot.datamybatis.pojo.Employee">
+        select * from employee where id =#{id};
+    </select>
+<!--    boolean addEmployee(Employee employee);-->
+    <insert id="addEmployee" useGeneratedKeys="true" keyColumn="id" keyProperty="id" >
+        insert into employee(id, lastName, email, gender, d_id) VALUES (#{id},#{lastName},#{email},#{gender},#{dId});
+    </insert>
+<!--    boolean updateEmployee(Employee employee);-->
+    <update id="updateEmployee">
+        update employee set lastName = #{lastName},email = #{email},gender = #{gender},d_id = #{dId}  where id =#{id};
+    </update>
+<!--    boolean delEmployee(Integer id);-->
+    <delete id="delEmployee">
+       delete from employee where id =#{id};
+    </delete>
+
+</mapper>
