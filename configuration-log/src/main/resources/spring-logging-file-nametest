@@ -1,0 +1,3 @@
+2019-12-30===INFO ===main===org.springframework.boot.StartupInfoLogger===com.malu.springboot.configurationlog.ConfigurationLogApplication===Starting ConfigurationLogApplication on maludeMacBook-Pro.local with PID 1803 (/Volumes/files/IdeaProjects/SpringBoot/configuration-log/target/classes started by malu in /Volumes/files/IdeaProjects/SpringBoot)
+2019-12-30===DEBUG===main===org.springframework.boot.StartupInfoLogger===com.malu.springboot.configurationlog.ConfigurationLogApplication===Running with Spring Boot v2.2.2.RELEASE, Spring v5.2.2.RELEASE
+2019-12-30===INFO ===main===org.springframework.boot.SpringApplication===com.malu.springboot.configurationlog.ConfigurationLogApplication===No active profile set, falling back to default profiles: default
