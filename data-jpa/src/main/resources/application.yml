@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://10.211.55.55/springBootTest
+    username: root
+    password: 4444
+
+
+  jpa:
+    hibernate:
+      #自动更新表结构 如果没有表就创建新表
+      ddl-auto: update
+      #自动显示 sql语句
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+
+debug: true
+logging:
+  level:
+    com: trace
+
+
