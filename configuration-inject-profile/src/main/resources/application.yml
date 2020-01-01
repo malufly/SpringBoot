@@ -1,0 +1,28 @@
+
+person:
+  lastName: yml配置文件
+  age: 99
+  boss: false
+  dog:
+    name: yml
+    age: 2
+  list:
+    -ymlaa
+    -ymlbb
+    -ymlcc
+  map:
+    k1: ymlv1
+    k2: ymlv2
+spring:
+  profiles:
+    active: ymlprod
+---
+person:
+  lastName: yml开发环境
+spring:
+  profiles: ymldev
+---
+person:
+  lastName: yml生产环境
+spring:
+  profiles: ymlprod
