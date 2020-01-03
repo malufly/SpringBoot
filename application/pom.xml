@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.malu.springBoot</groupId>
-    <artifactId>configuration-log</artifactId>
+    <artifactId>application</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>configuration-log</name>
+    <name>application</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -34,13 +34,6 @@
                     <artifactId>junit-vintage-engine</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
