@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>Dashboard Template for Bootstrap</title>
+
+		<!-- Bootstrap core CSS -->
+		<link th:href="@{/asserts/css/bootstrap.min.css}" rel="stylesheet">
+
+		<!-- Custom styles for this template -->
+		<link href="asserts/css/dashboard.css" th:href="@{/asserts/css/dashboard.css}" rel="stylesheet">
+
+		<style type="text/css">
+			/* Chart.js */
+			
+			@-webkit-keyframes chartjs-render-animation {
+				from {
+					opacity: 0.99
+				}
+				to {
+					opacity: 1
+				}
+			}
+			
+			@keyframes chartjs-render-animation {
+				from {
+					opacity: 0.99
+				}
+				to {
+					opacity: 1
+				}
+			}
+			
+			.chartjs-render-monitor {
+				-webkit-animation: chartjs-render-animation 0.001s;
+				animation: chartjs-render-animation 0.001s;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div th:replace="~{common/nav :: topbar}"></div>
+
+		<div class="container-fluid">
+			<div class="row">
+				<div th:replace="~{common/nav :: sidebar(4)}"></div>
+
+				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+					<h2>Section title</h2>
+					<div class="table-responsive">
+						<form class="form-signin" action="dashboard.html" th:action="@{/employee}" method="post">
+
+							<input th:type="hidden" name="_method" value="PUT" th:if="${employee != null}">
+
+							<label class="sr-only">id</label>
+							<input type="text" name="id" th:value="${employee != null}? ${employee.id}" class="form-control" placeholder="id" required="" autofocus="">
+							<label class="sr-only">lastName</label>
+							<input type="text" name="lastName" th:value="${employee != null}? ${employee.lastName}" class="form-control" placeholder="lastname" required="">
+
+							<div class="radio">
+								<label>
+									<input type="radio" name="gender"  value="1"  th:checked="${employee == null || employee.gender == 1}" >
+									男
+								</label>
+								<label>
+									<input type="radio" name="gender"  value="0" th:checked="${employee != null && employee.gender == 0}">
+									女
+								</label>
+							</div>
+
+							<select class="form-control" name="department.id">
+								<option th:value="${department.id}" th:each="department : ${departments}" th:selected="${employee != null && employee.department.id == department.id} ? 'selected'" >[[${department.departmentName}]]</option>
+							</select>
+
+							<label class="sr-only">email</label>
+							<input type="text" name="email" th:value="${employee != null}? ${employee.email}" class="form-control" placeholder="email" required="">
+							<label class="sr-only">birth</label>
+							<input type="text" name="birth" th:value="${employee != null}? ${#calendars.format(employee.birth,'yyyy/MM/dd')}" class="form-control" placeholder="birth" required="">
+							<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+						</form>
+
+					</div>
+				</main>
+			</div>
+		</div>
+
+
+
+		<div th:replace="common/base :: common_script"></div>
+		<script>
+
+
+		</script>
+
+	</body>
+
+</html>
