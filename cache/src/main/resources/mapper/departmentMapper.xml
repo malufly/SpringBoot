@@ -1,0 +1,31 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.malu.springboot.cache.mapper.DepartmentMapper">
+
+
+<!--    Department selectDepartment(Integer id);-->
+    <select id="selectDepartment" resultType="com.malu.springboot.cache.bean.Department">
+        select id,departmentName from department where id=#{id};
+    </select>
+
+<!--    List<Department> selectAll();-->
+    <select id="selectAll" resultType="com.malu.springboot.cache.bean.Department">
+        select id,departmentName from department;
+    </select>
+<!--    boolean insertDepartment(Department department);-->
+    <insert id="insertDepartment" useGeneratedKeys="true">
+        insert into department(id, departmentName) value (#{id},#{departmentName});
+    </insert>
+<!--    boolean deleteDepartment(Integer id);-->
+    <delete id="deleteDepartment" >
+        delete from department where id = #{id};
+    </delete>
+<!--    boolean updateDepartment(Department department);-->
+    <update id="updateDepartment" >
+        update department set departmentName = #{departmentName} where id = #{id};
+    </update>
+
+
+</mapper>

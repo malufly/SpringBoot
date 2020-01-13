@@ -1,0 +1,31 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.malu.springboot.cache.mapper.EmployeeMapper">
+
+    <resultMap id="employee" type="com.malu.springboot.cache.bean.Employee">
+        <association property="department" column="department" javaType="com.malu.springboot.cache.bean.Department" select="com.malu.springboot.cache.mapper.DepartmentMapper.selectDepartment"></association>
+    </resultMap>
+
+<!--    Employee selectEmployeeById(Integer id);-->
+    <select id="selectEmployeeById" resultMap="employee">
+        select id, lastName, email, gender, department, birth from employee where id = #{id};
+    </select>
+<!--    List<Employee> selectAll();-->
+    <select id="selectAll" resultMap="employee">
+        select id, lastName, email, gender, department, birth from employee;
+    </select>
+<!--    boolean addEmployee(Employee employee);-->
+    <insert id="addEmployee" useGeneratedKeys="true" >
+        insert into employee(id,lastName, email, gender, department, birth) value (#{id},#{lastName},#{email},#{gender},#{department.id},#{birth});
+    </insert>
+<!--    boolean deleteEmployeeById(Integer id);-->
+    <delete id="deleteEmployeeById" >
+        delete from employee where id = #{id};
+    </delete>
+<!--    boolean updateEmployee(Employee employee);-->
+    <update id="updateEmployee" >
+        update employee set lastName = #{lastName},email = #{email},gender=#{gender},department=#{department.id},birth=#{birth} where id =#{id};
+    </update>
+</mapper>
